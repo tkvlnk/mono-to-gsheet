@@ -1,4 +1,5 @@
 node_modules
-secrets
+/secrets/*
+!/secrets/*.example
 client-secret.json
 .env
