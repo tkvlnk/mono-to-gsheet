@@ -1,8 +1,9 @@
 import { google } from 'googleapis';
 import { authenticate } from '@google-cloud/local-auth';
+import { resolve } from 'path';
 
 const auth = await authenticate({
-  keyfilePath: '/home/tito/projects/mono-to-gsheet/client-secret.json', // Path to your OAuth credentials file
+  keyfilePath: resolve(process.cwd(), './client-secret.json'), // Path to your OAuth credentials file
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
