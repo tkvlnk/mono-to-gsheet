@@ -6,7 +6,8 @@
   "main": "index.ts",
   "scripts": {
     "start": "dotenv ts-node index.ts",
-    "auth-google": "dotenv ts-node scripts/doGoogleAuth.ts"
+    "auth-google": "dotenv ts-node scripts/doGoogleAuth.ts",
+    "import-past-year": "dotenv ts-node scripts/importPastYear.ts"
   },
   "keywords": [],
   "author": "",

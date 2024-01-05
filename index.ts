@@ -5,7 +5,7 @@ import {statementsToColumns} from './src/statementsToColumns.ts';
 import {getAccountByType} from './src/getAccountByType.ts';
 
 const {from} = getUnixTimeOfMonth({
-  monthName: 'December',
+  monthName: 'DEC',
   timezone: 'Europe/Kiev',
   year: 2023,
 });
