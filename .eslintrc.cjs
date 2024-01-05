@@ -1,9 +1,35 @@
-/**
- * @type {import("eslint").Linter.Config}
- */
 module.exports = {
-  extends: ['./node_modules/@tkvlnk/configs/eslint/base.js'],
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: 'xo-space',
+  overrides: [
+    {
+      env: {
+        node: true,
+      },
+      files: [
+        '.eslintrc.{js,cjs}',
+      ],
+      parserOptions: {
+        sourceType: 'script',
+      },
+    },
+    {
+      extends: [
+        'xo-typescript/space',
+      ],
+      files: [
+        '*.ts',
+        '*.tsx',
+      ],
+    },
+  ],
   parserOptions: {
-    project: './tsconfig.json'
-  }
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  rules: {
+  },
 };

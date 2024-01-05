@@ -17,9 +17,11 @@
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
-    "@tkvlnk/configs": "github:tkvlnk/configs#v2.2.5",
-    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": ">=6.0.0",
     "eslint": "^8.56.0",
+    "eslint-config-xo-space": "^0.34.0",
+    "eslint-config-xo-typescript": "^1.0.1",
     "typescript": "^5.3.3"
   }
 }
