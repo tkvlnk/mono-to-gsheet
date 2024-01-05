@@ -7,7 +7,7 @@ import {monthNames} from '../src/monthNames.ts';
 import {statementsToColumns} from '../src/statementsToColumns.ts';
 import {updateSheet} from '../src/updateSheet.ts';
 
-const year = new Date().getFullYear() - 1;
+const year = process.env.YEAR ? parseInt(process.env.YEAR, 10) : new Date().getFullYear() - 1;
 
 console.log(`Started for Year - ${year}`);
 

@@ -18,10 +18,10 @@ export function getUnixTimeOfMonth({
 
   monthNumber ??= getMonthNumber(monthName);
 
-  return {
-    from: getUnixTimeStartOfMonth({monthNumber, year, timezone}),
-    to: getUnixTimeEndOfMonth({monthNumber, year, timezone}),
-  };
+  const from = getUnixTimeStartOfMonth({monthNumber, year, timezone});
+  const to = getUnixTimeEndOfMonth({monthNumber, year, timezone});
+
+  return to <= Math.floor(Date.now() / 100) ? {from, to} : {from};
 }
 
 function getUnixTimeStartOfMonth({

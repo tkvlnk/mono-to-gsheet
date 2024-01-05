@@ -7,7 +7,8 @@
   "scripts": {
     "start": "dotenv ts-node index.ts",
     "auth-google": "dotenv ts-node scripts/doGoogleAuth.ts",
-    "import-past-year": "dotenv ts-node scripts/importPastYear.ts"
+    "import-year": "dotenv ts-node scripts/importYear.ts",
+    "import-month": "dotenv ts-node scripts/importMonth.ts"
   },
   "keywords": [],
   "author": "",
