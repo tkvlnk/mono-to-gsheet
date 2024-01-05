@@ -1,14 +1,8 @@
-// Import {updateSheet} from './src/updateSheet.ts';
-
+import {updateSheet} from './src/updateSheet.ts';
 import {getClientInfo} from './src/getClientInfo.ts';
 import {getStatements} from './src/getStatements.ts';
 import {getUnixTimeOfMonth} from './src/getUnixTimeOfMonth.ts';
-
-// Await updateSheet({
-//   spreadsheetId: '1TcpjYSMU6_AegrKyCfYJvcuTcWdzEKT1dHpgScGEo2Q',
-//   range: 'Dec2023!A1',
-//   values: [['EVEN MORE New Data!!!!!!111234455']],
-// });
+import {statementsToColumns} from './src/statementsToColumns.ts';
 
 const account = await getClientInfo().then(info => info.accounts.find(({type}) => type === 'platinum')?.id);
 
@@ -22,9 +16,13 @@ const {from} = getUnixTimeOfMonth({
   year: 2023,
 });
 
-console.log(from);
-
-console.log(await getStatements({
+const statements = await getStatements({
   account,
   from,
-}));
+});
+
+await updateSheet({
+  spreadsheetId: '1TcpjYSMU6_AegrKyCfYJvcuTcWdzEKT1dHpgScGEo2Q',
+  range: 'Dec2023!A1',
+  values: statementsToColumns(statements),
+});
