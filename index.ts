@@ -1,14 +1,8 @@
 import {updateSheet} from './src/updateSheet.ts';
-import {getClientInfo} from './src/getClientInfo.ts';
 import {getStatements} from './src/getStatements.ts';
 import {getUnixTimeOfMonth} from './src/getUnixTimeOfMonth.ts';
 import {statementsToColumns} from './src/statementsToColumns.ts';
-
-const account = await getClientInfo().then(info => info.accounts.find(({type}) => type === 'platinum')?.id);
-
-if (!account) {
-  throw new Error('Account not found');
-}
+import {getAccountByType} from './src/getAccountByType.ts';
 
 const {from} = getUnixTimeOfMonth({
   monthName: 'December',
@@ -17,7 +11,7 @@ const {from} = getUnixTimeOfMonth({
 });
 
 const statements = await getStatements({
-  account,
+  account: await getAccountByType('platinum'),
   from,
 });
 

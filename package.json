@@ -6,7 +6,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "dotenv ts-node index.ts",
-    "auth-google": "dotenv ts-node src/doGoogleAuth.ts"
+    "auth-google": "dotenv ts-node scripts/doGoogleAuth.ts"
   },
   "keywords": [],
   "author": "",
