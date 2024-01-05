@@ -5,7 +5,8 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
-    "start": "dotenv ts-node index.ts"
+    "start": "dotenv ts-node index.ts",
+    "auth-google": "dotenv ts-node src/doGoogleAuth.ts"
   },
   "keywords": [],
   "author": "",

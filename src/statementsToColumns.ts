@@ -1,3 +1,4 @@
+import formatDate from 'date-fns-tz/format';
 import type {Statement} from './getStatements.ts';
 
 const columnsOrder = [
@@ -6,7 +7,6 @@ const columnsOrder = [
   'description',
   'mcc',
   'originalMcc',
-  'hold',
   'amount',
   'operationAmount',
   'currencyCode',
@@ -19,6 +19,7 @@ const columnsOrder = [
   'counterEdrpou',
   'counterIban',
   'counterName',
+  'hold',
 ] satisfies Array<keyof Statement>;
 
 export function statementsToColumns(statements: Statement[]): string[][] {
@@ -30,11 +31,18 @@ export function statementsToColumns(statements: Statement[]): string[][] {
     for (const column of columnsOrder) {
       switch (column) {
         case 'time': {
-          const date = new Date(statement[column] * 1000);
-
           row.push(
-            date.toISOString(),
+            formatDate(statement[column] * 1000, 'yyyy-MM-dd HH:mm:ss', {
+              timeZone: 'Europe/Kiev',
+            }),
           );
+
+          continue;
+        }
+
+        case 'amount':
+        case 'operationAmount': {
+          row.push((statement[column] / 100).toFixed(2).replace('.', ','));
 
           continue;
         }

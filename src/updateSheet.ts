@@ -1,11 +1,4 @@
-import {google} from 'googleapis';
-import {authenticate} from '@google-cloud/local-auth';
-import {resolve} from 'path';
-
-const sheets = authenticate({
-  keyfilePath: resolve(process.cwd(), './client-secret.json'),
-  scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-}).then(auth => google.sheets({version: 'v4', auth}));
+import {googleSheetsApi} from './googleSheetsApi.ts';
 
 export async function updateSheet({
   spreadsheetId,
@@ -17,10 +10,10 @@ export async function updateSheet({
   values: string[][];
 }) {
   try {
-    await (await sheets).spreadsheets.values.update({
+    await googleSheetsApi.spreadsheets.values.update({
       spreadsheetId,
       range,
-      valueInputOption: 'RAW',
+      valueInputOption: 'USER_ENTERED',
       requestBody: {
         values,
       },
