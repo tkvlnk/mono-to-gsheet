@@ -1,3 +1,5 @@
+import { load as loadEnv } from "deno-std/dotenv/mod.ts";
+
 export type Account = {
   id: string;
   sendId: string;
@@ -30,15 +32,19 @@ export type ClientInfo = {
 };
 
 export async function getClientInfo() {
-  if (!process.env.MONOBANK_TOKEN) {
-    throw new Error('MONOBANK_TOKEN is not set');
+  const {
+    MONOBANK_TOKEN,
+  } = await loadEnv();
+
+  if (!MONOBANK_TOKEN) {
+    throw new Error("MONOBANK_TOKEN is not set");
   }
 
   const response = await fetch(
-    'https://api.monobank.ua/personal/client-info',
+    "https://api.monobank.ua/personal/client-info",
     {
       headers: {
-        'X-Token': process.env.MONOBANK_TOKEN,
+        "X-Token": MONOBANK_TOKEN,
       },
     },
   );

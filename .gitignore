@@ -1,5 +1,3 @@
-node_modules
 /secrets/*
 !/secrets/*.example
-client-secret.json
 .env
