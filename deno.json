@@ -1,0 +1,15 @@
+{
+  "tasks": {
+    "dev": "deno run --watch main.t/* s",
+    "auth": "deno run -A scripts/doGoogleAuth.ts",
+    "import-year": "deno run -A scripts/importYear.ts",
+    "import-month": "deno run -A scripts/importMonth.ts"
+  },
+  "imports": {
+    "googleapis": "npm:googleapis",
+    "luxon": "npm:luxon",
+    "@google-cloud/local-auth": "npm:@google-cloud/local-auth",
+    "deno-std/": "https://deno.land/std@0.211.0/",
+    "secrets": "./secrets/"
+  }
+}
